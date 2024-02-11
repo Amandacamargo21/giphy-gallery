@@ -1,21 +1,20 @@
 <template>
   <div class="gifList">
-    <gif 
-      v-for="gif in gifs" 
-      :key="gif.id" 
-      :gif="gif" 
-      :class="{ 'expanded': gif.isExpanded }"
-      @close-gif="closeGif(gif)"
-    />
+    <gif v-for="gif in gifs" :key="gif.id" :gif="gif" :class="{ 'expanded': gif.isExpanded }"
+      @close-gif="closeGif(gif)" />
   </div>
 </template>
 
 <script>
 import Gif from "@/components/Gif.vue";
+import ShareButtons from "@/components/ShareButtons.vue";
 
 export default {
   name: "GifList",
-  components: { Gif },
+  components: {
+    Gif,
+    ShareButtons
+  },
   props: {
     gifs: Array
   },
@@ -31,7 +30,9 @@ export default {
 .gifList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1rem;
+  padding-top: 1rem;
+  justify-content: center;
 }
 
 .gif {

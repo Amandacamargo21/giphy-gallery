@@ -1,9 +1,9 @@
 <template>
     <section class="p-10">
+        <search @fetch-gifs="onFetch" @empty-input="searchInitialGifs"/>
       <div v-if="isLoading" class="flex justify-center items-center h-screen">
         <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
       </div>
-      <search @fetch-gifs="onFetch" @empty-input="searchInitialGifs"/>
       <gif-list v-if="!isLoading" :gifs="gifs"/>
     </section>
   </template>
@@ -42,7 +42,6 @@
         fetch(`https://api.giphy.com/v1/gifs/trending?api_key=MOazGpFAidHLr2nDYwcGjAc7LrlRJiUg&offset=${this.offset}&limit=${this.limit}`)
           .then(response => response.json())
           .then(result => {
-            console.log(result);
             this.gifs = this.gifs.concat(result.data); 
             this.offset += this.limit; 
             this.isLoading = false;
@@ -76,5 +75,11 @@
       transform: rotate(360deg);
     }
   }
+
+  .gif-background {
+  background-image: linear-gradient(135deg, #ffcc33, #ff6f00, #ff00cc, #833ab4, #0088ff);
+  width: 100%;
+  height: 100vh;
+}
   </style>
   

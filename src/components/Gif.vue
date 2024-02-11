@@ -11,6 +11,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           <img :src="gif.images.original.url" class="gif-image" alt="gif">
+          <ShareButtons :gif-url="gif.url"/>
         </div>
       </div>
     </transition>
@@ -18,8 +19,13 @@
 </template>
 
 <script>
+import ShareButtons from "@/components/ShareButtons.vue";
+
 export default {
   name: "Gif",
+  components: {
+    ShareButtons
+  },
   props: {
     gif: Object
   },
@@ -71,6 +77,7 @@ export default {
 .gif-image {
   max-width: 100%;
   max-height: calc(80vh - 60px); 
+  padding-bottom: 1rem;
 }
 
 .fade-enter-active, .fade-leave-active {

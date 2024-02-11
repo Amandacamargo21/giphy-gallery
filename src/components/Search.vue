@@ -26,7 +26,6 @@ export default {
                 fetch(`https://api.giphy.com/v1/gifs/search?api_key=MOazGpFAidHLr2nDYwcGjAc7LrlRJiUg&q=${this.keyword}`)
                     .then(response => response.json())
                     .then(result => {
-                        console.log(result);
                         this.$emit('fetch-gifs', result.data);
                     })
                     .catch(error => {
