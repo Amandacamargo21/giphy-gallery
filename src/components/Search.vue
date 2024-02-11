@@ -1,6 +1,6 @@
 
 <template>
-    <input type="text" placeholder="What awesome giphy do you want to find today?" v-model="keyword" @input="onInput">
+    <input type="text" placeholder="What awesome giphy do you want to find today?" v-model="keyword" @input="onInput" >
 </template>
 
 <script>
@@ -17,20 +17,23 @@ export default {
             clearTimeout(this.timeout);
             this.timeout = setTimeout(() => {
                 this.search();
-            }, 500);
+            }, 200);
         },
         search() {
-            fetch(`https://api.giphy.com/v1/gifs/search?api_key=MOazGpFAidHLr2nDYwcGjAc7LrlRJiUg&q=${this.keyword}`)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result);
-                    this.gifs = result.data;
-                    this.$emit('fetch-gifs', result.data);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
+            if (this.keyword.trim() === '') {
+                this.$emit('empty-input');
+            } else {
+                fetch(`https://api.giphy.com/v1/gifs/search?api_key=MOazGpFAidHLr2nDYwcGjAc7LrlRJiUg&q=${this.keyword}`)
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result);
+                        this.$emit('fetch-gifs', result.data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+            }
+        },
     }
 }
 // MOazGpFAidHLr2nDYwcGjAc7LrlRJiUg
