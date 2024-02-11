@@ -1,25 +1,57 @@
 <template>
   <div class="gifList">
-    <gif v-for="gif in gifs" :key="gif.id" :gif="gif"/>
+    <gif 
+      v-for="gif in gifs" 
+      :key="gif.id" 
+      :gif="gif" 
+      :class="{ 'expanded': gif.isExpanded }"
+      @close-gif="closeGif(gif)"
+    />
   </div>
 </template>
 
 <script>
 import Gif from "@/components/Gif.vue";
+
 export default {
-    name: "GifList",
-    components: {Gif},
-    props: {
-        gifs: Array
+  name: "GifList",
+  components: { Gif },
+  props: {
+    gifs: Array
+  },
+  methods: {
+    closeGif(gif) {
+      gif.isExpanded = false;
     }
+  }
 }
 </script>
 
 <style scoped>
-  #gifList {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
+.gifList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gif {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  position: relative;
+}
+
+.gif:hover {
+  cursor: pointer;
+}
+
+.gif.expanded {
+  width: 400px;
+  height: 400px;
+}
+
+.gif img {
+  width: 100%;
+  height: 100%;
+}
 </style>
