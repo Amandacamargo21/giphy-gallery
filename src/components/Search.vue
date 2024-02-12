@@ -1,6 +1,6 @@
 
 <template>
-    <input type="text" placeholder="What awesome giphy do you want to find today?" v-model="keyword" @input="onInput" class="m-3" >
+    <input type="text" placeholder="Find gifs :)" v-model="keyword" @input="onInput" class="m-3" >
 </template>
 
 <script>
