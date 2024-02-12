@@ -1,6 +1,6 @@
 
 <template>
-    <input type="text" placeholder="What awesome giphy do you want to find today?" v-model="keyword" @input="onInput" >
+    <input type="text" placeholder="What awesome giphy do you want to find today?" v-model="keyword" @input="onInput" class="m-3" >
 </template>
 
 <script>
@@ -46,7 +46,7 @@ input {
   border: 2px solid #5f5f5f;
   outline: 0;
   display: block;
-  width: 100%;
+  width: 50%;
 }
 
 input:focus {

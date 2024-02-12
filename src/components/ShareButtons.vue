@@ -4,13 +4,13 @@
             <img src="@/assets/css/images/icons8-whatsapp.svg" alt="WhatsApp" />
         </button>
         <button @click="shareInstagram" class="share-button">
-            <img src="@/assets/css/images/icons8-instagram.svg" alt="WhatsApp" />
+            <img src="@/assets/css/images/icons8-instagram.svg" alt="Instagram" />
         </button>
         <button @click="shareFacebook" class="share-button">
-            <img src="@/assets/css/images/icons8-facebook.svg" alt="WhatsApp" />
+            <img src="@/assets/css/images/icons8-facebook.svg" alt="Facebook" />
         </button>
         <button @click="copyLink" class="share-button">
-            <img src="@/assets/css/images/icons8-copy-50.png" alt="WhatsApp" />
+            <img src="@/assets/css/images/icons8-copy-50.png" alt="Copy" />
         </button>
     </div>
 </template>
@@ -56,11 +56,13 @@ export default {
 <style scoped>
 .share-buttons {
     position: absolute;
-    bottom: 35px;
-    background: #f2f5f491;
+    bottom: 0;
+    background: #d2d2d2;
     display: flex;
     justify-content: space-evenly;
     width: -webkit-fill-available;
+    border-radius: 0 0 10px 10px;
+    padding: 1em;
 }
 
 .share-button {
@@ -69,7 +71,12 @@ export default {
     color: #000;
     cursor: pointer;
     width: 1.5em;
-
+    transition: transform 0.3s ease; 
 }
+
+.share-button:hover {
+    transform: scale(1.1); 
+}
+
 </style>
   

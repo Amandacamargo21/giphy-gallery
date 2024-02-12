@@ -1,5 +1,6 @@
 <template>
-    <section class="p-10">
+    <section class="p-10 main ">
+        <WelcomeView />
         <search @fetch-gifs="onFetch" @empty-input="searchInitialGifs"/>
       <div v-if="isLoading" class="flex justify-center items-center h-screen">
         <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
@@ -11,13 +12,15 @@
   <script>
   import Search from '@/components/Search.vue';
   import GifList from '@/components/GifList.vue';
+import WelcomeView from './WelcomeView.vue';
   
   export default {
     name: 'Gifview',
     components: {
-      GifList,
-      Search
-    },
+    GifList,
+    Search,
+    WelcomeView
+},
     data() {
       return {
         gifs: [],
@@ -80,6 +83,13 @@
   background-image: linear-gradient(135deg, #ffcc33, #ff6f00, #ff00cc, #833ab4, #0088ff);
   width: 100%;
   height: 100vh;
+}
+
+.main {
+    background: #000000d4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
   </style>
   

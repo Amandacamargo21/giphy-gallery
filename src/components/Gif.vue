@@ -11,12 +11,14 @@
             <p class="text-2xl">Share this gif!</p>
             <button @click="closeModal" class="close-button">
               <span aria-hidden="true">
-                <font-awesome-icon icon="xmark" />
+                <img src="@/assets/css/images/quadrado-x (1).png" alt="fechar" />
               </span>
             </button>
           </div>
-          <img :src="gif.images.original.url" class="gif-image" alt="gif">
-          <ShareButtons />
+          <div class="relative">
+            <img :src="gif.images.original.url" class="gif-image" alt="gif">
+            <ShareButtons />
+          </div>
         </div>
       </div>
     </transition>
@@ -76,10 +78,11 @@ export default {
 }
 
 .modal {
-  background-color: white;
+  background-color: #343030;
   padding: 1.5rem;
   border-radius: 5px;
   position: relative;
+  color: rgb(255, 255, 255);
 }
 
 .gif-image {
