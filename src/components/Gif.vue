@@ -17,7 +17,7 @@
           </div>
           <div class="relative">
             <img :src="gif.images.original.url" class="gif-image" alt="gif">
-            <ShareButtons />
+            <ShareButtons :gif-url="gif.url"/>
           </div>
         </div>
       </div>
