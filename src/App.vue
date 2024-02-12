@@ -1,14 +1,14 @@
 <template>
-  <GifView />
+  <GifView/>
 </template>
 
 <script>
-import GifView from '@/views/GifView.vue';
+import GifView from './views/GifView.vue';
 
 export default {
   name: 'App',
   components: {
     GifView
-  }
+}
 }
 </script>

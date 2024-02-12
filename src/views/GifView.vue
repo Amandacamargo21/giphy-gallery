@@ -13,7 +13,7 @@
   import GifList from '@/components/GifList.vue';
   
   export default {
-    name: 'Home',
+    name: 'Gifview',
     components: {
       GifList,
       Search

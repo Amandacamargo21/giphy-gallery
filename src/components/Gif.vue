@@ -1,17 +1,22 @@
 <template>
   <div>
-    <div class="gif" 
-      :style="`background-image: url(${gif.images.original.url})`"
-      @click="showModal = true">
+    <div class="gif" :style="`background-image: url(${gif.images.original.url})`" @click="showModal = true"
+      @mouseenter="hovering = true" @mouseleave="hovering = false">
+      <div v-if="hovering" class="overlay" :class="{ 'overlay-visible': hovering }"></div>
     </div>
     <transition name="fade">
       <div v-if="showModal" class="modal-overlay" @click="closeModal">
         <div class="modal">
-          <button @click="closeModal" class="close-button">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <div class="flex justify-between items-center pb-4 border-b-2 border-solid border-gray-300">
+            <p class="text-2xl">Share this gif!</p>
+            <button @click="closeModal" class="close-button">
+              <span aria-hidden="true">
+                <font-awesome-icon icon="xmark" />
+              </span>
+            </button>
+          </div>
           <img :src="gif.images.original.url" class="gif-image" alt="gif">
-          <ShareButtons :gif-url="gif.url"/>
+          <ShareButtons />
         </div>
       </div>
     </transition>
@@ -31,6 +36,8 @@ export default {
   },
   data() {
     return {
+      showModal: false,
+      hovering: false,
       showModal: false
     };
   },
@@ -48,6 +55,7 @@ export default {
   height: 200px;
   background-size: cover;
   position: relative;
+  border-radius: 10px;
 }
 
 .gif:hover {
@@ -69,27 +77,31 @@ export default {
 
 .modal {
   background-color: white;
-  padding: 60px 20px 20px; 
+  padding: 1.5rem;
   border-radius: 5px;
   position: relative;
 }
 
 .gif-image {
   max-width: 100%;
-  max-height: calc(80vh - 60px); 
-  padding-bottom: 1rem;
+  max-height: calc(80vh - 60px);
+  border-radius: 10px;
+  margin-top: 1rem;
+  position: relative;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
 .close-button {
-  position: absolute;
+  /* position: absolute; */
   top: 10px;
   right: 10px;
   background: none;
@@ -97,5 +109,20 @@ export default {
   font-size: 24px;
   color: #000;
   cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.overlay-visible {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 </style>

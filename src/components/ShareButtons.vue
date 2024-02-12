@@ -55,18 +55,21 @@ export default {
   
 <style scoped>
 .share-buttons {
+    position: absolute;
+    bottom: 35px;
+    background: #f2f5f491;
     display: flex;
     justify-content: space-evenly;
+    width: -webkit-fill-available;
 }
 
 .share-button {
     background: none;
     border: none;
-    margin: 0 5px;
-    font-size: 20px;
     color: #000;
     cursor: pointer;
     width: 1.5em;
+
 }
 </style>
   
